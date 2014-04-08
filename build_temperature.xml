@@ -6,11 +6,11 @@
   <property name="wls.hostname" value="localhost"/>
   <property name="wls.port" value="7101"/>
   <property name="wls.server.name" value="DefaultServer"/>
-  <property name="ear.deployed.name" value="wsdlcEar"/>
+  <property name="ear.deployed.name" value="TemperatureServiceEAR"/>
   <property name="example-output" value="output"/>
   <property name="compiledWsdl-dir" value="${example-output}/compiledWsdl"/>
   <property name="impl-dir" value="${example-output}/impl"/>
-  <property name="ear-dir" value="${example-output}/wsdlcEar"/>
+  <property name="ear-dir" value="${example-output}/TemperatureServiceEAR"/>
   <property name="clientclass-dir" value="${example-output}/clientclasses"/>
   <path id="client.class.path">
     <pathelement path="${clientclass-dir}"/>
@@ -30,11 +30,11 @@
   <target name="generate-from-wsdl">
     <wsdlc srcwsdl="wsdl_files/TemperatureService.wsdl"
            destjwsdir="${compiledWsdl-dir}" destimpldir="${impl-dir}"
-           packagename="examples.webservices.wsdlc"/>
+           packagename="com.aadityatiwari.learn.webservices.temperature"/>
   </target>
   <target name="build-service">
     <jwsc srcdir="src" destdir="${ear-dir}">
-      <jws file="examples/webservices/wsdlc/TemperaturePortTypeImpl.java"
+      <jws file="com/aadityatiwari/learn/webservices/temperature/TemperaturePortTypeImpl.java"
            compiledwsdl="${compiledWsdl-dir}/TemperatureService_wsdl.jar"
            type="JAXWS">
         <WLHttpTransport contextpath="temp" serviceuri="TemperatureService"
@@ -61,11 +61,11 @@
       <javac srcdir="${clientclass-dir}" destdir="${clientclass-dir}"
              includes="**/*.java"/>
       <javac srcdir="src" destdir="${clientclass-dir}"
-             includes="examples/webservices/wsdlc/client/**/*.java"/>
+             includes="com/aadityatiwari/learn/webservices/temperature/client/**/*.java"/>
     </clientgen>
   </target>
   <target name="run">
-    <java classname="examples.webservices.wsdlc.client.TemperatureClient"
+    <java classname="com.aadityatiwari.learn.webservices.temperature.client.TemperatureClient"
           fork="true" failonerror="true">
       <classpath refid="client.class.path"/>
       <arg line="http://${wls.hostname}:${wls.port}/temp/TemperatureService"/>

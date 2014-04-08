@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<WL5G3N0:definitions name="TemperatureService" targetNamespace="http://www.xmethods.net/sd/TemperatureService.wsdl" xmlns="" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.w3.org/2001/XMLSchema" xmlns:WL5G3N2="http://www.xmethods.net/sd/TemperatureService.wsdl" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:message name="getTempRequest">
+    <WL5G3N0:part name="zip" type="WL5G3N1:string"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="getTempResponse">
+    <WL5G3N0:part name="return" type="WL5G3N1:float"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="TemperaturePortType">
+    <WL5G3N0:operation name="getTemp">
+      <WL5G3N0:input message="WL5G3N2:getTempRequest"/>
+      <WL5G3N0:output message="WL5G3N2:getTempResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="TemperatureBinding" type="WL5G3N2:TemperaturePortType">
+    <WL5G3N3:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="getTemp">
+      <WL5G3N3:operation/>
+      <WL5G3N0:input>
+        <WL5G3N3:body namespace="urn:xmethods-Temperature" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body namespace="urn:xmethods-Temperature" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="TemperatureService">
+    <WL5G3N0:documentation>Returns current temperature in a given U.S.
+                               zipcode</WL5G3N0:documentation>
+    <WL5G3N0:port binding="WL5G3N2:TemperatureBinding" name="TemperaturePort">
+      <WL5G3N3:address location="http://localhost:7001/temp/TemperatureService"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

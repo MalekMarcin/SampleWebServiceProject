@@ -67,7 +67,12 @@
       <hash n="resourcesContentSet">
          <list n="pattern-filters">
             <string v="+wsdl_files/"/>
-            <string v="+*"/>
+            <string v="+META-INF/"/>
+            <string v="+wsdls/"/>
+            <string v="+SampleWebServiceProject.jpr"/>
+            <string v="+build.xml"/>
+            <string v="+build_complex.xml"/>
+            <string v="+build_temperature.xml"/>
          </list>
          <list n="url-path">
             <url path="."/>
@@ -88,7 +93,7 @@
    </hash>
    <hash n="oracle.jdeveloper.compiler.ant.AntConfiguration">
       <value n="makeTarget" v="deploy"/>
-      <url n="projectBuildfile" path="build_complex.xml"/>
+      <url n="projectBuildfile" path="build_temperature.xml"/>
       <list n="targetList">
          <string v="deploy"/>
       </list>
@@ -120,6 +125,20 @@
       </hash>
       <list n="runConfigurationList">
          <string v="Default"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectLibraries">
+      <list n="exportedReferences">
+         <hash>
+            <value n="id" v="WebLogic 10.3 Remote-Client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+      <list n="libraryReferences">
+         <hash>
+            <value n="id" v="WebLogic 10.3 Remote-Client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">
